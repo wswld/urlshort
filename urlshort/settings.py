@@ -37,8 +37,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'graphene_django',
     'urlshort.urlshort_web.apps.URLShortWeb',
 ]
+
+GRAPHENE = {
+    "SCHEMA": "urlshort.schema.schema",
+    "SCHEMA_INDENT": 2,
+    "MIDDLEWARE": ("graphene_django.debug.DjangoDebugMiddleware",),
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
