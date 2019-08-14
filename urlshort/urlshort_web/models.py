@@ -13,9 +13,9 @@ class URLEntry(models.Model):
     slug = models.CharField(max_length=6, blank=True, primary_key=True)
     created = models.DateTimeField(auto_now_add=True)
     
-    def save(self):
+    def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = _get_slug()
             while URLEntry.objects.filter(slug=self.slug).exists():
                 self.slug = _get_slug()
-        super(URLEntry, self).save()
+        super(URLEntry, self).save(*args, **kwargs)
